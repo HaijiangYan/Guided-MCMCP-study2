@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="main_div">
+        <h1>Instructions</h1>
+
+        <hr>
+
+        <p>In this experiment, you will be presented with pairs of images. You need to pick one of them, according to you response to the question asked above the image.</p>
+
+        <hr>
+
+        <div>
+            <div class="row">
+                <div class="col-xs-10"></div>
+                <div class="col-xs-2">
+                    <button type="button" id="begin" class="btn btn-success btn-lg" onClick="dallinger.goToPage('experiment2');">
+                    Begin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        dallinger.createParticipant();
+    </script>
+{% endblock %}

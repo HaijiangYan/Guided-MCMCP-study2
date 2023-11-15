@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="main_div">
+        <div id="stimulus">
+            <h1>Rate the face</h1>
+            <div>
+                <p id="face_left">face_left</p> 
+                <p id="face_right">face_right</p> 
+            </div>
+            <div>
+                <input type="range" id="ratingSlider" name="rating" min="0" max="100" step="1">
+                <p>Rating: <span id="ratingValue">100</span></p>
+                <button type="button" class="btn btn-primary submit-response" id="left_button" onClick="submit_response(0);">Left</button>
+                <button type="button" class="btn btn-primary submit-response" id="right_button" onClick="submit_response(1);">Right</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block libs %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='scripts/markdown.min.js') }}" type="text/javascript"> </script>
+    <!-- <script src="{{ url_for('static', filename='scripts/raphael-min.js') }}" type="text/javascript"> </script> -->
+    <script src="{{ url_for('static', filename='scripts/experiment2.js') }}" type="text/javascript"> </script>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // paper = Raphael(0, 0, 800, 300);
+//         document.getElementById("ratingSlider").oninput = function() {
+//     var value = document.getElementById("ratingSlider").value;
+//     document.getElementById("ratingValue").innerText = value;
+// }
+        create_agent();
+    </script>
+{% endblock %}
