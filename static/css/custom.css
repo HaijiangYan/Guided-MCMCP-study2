@@ -1,35 +1,32 @@
 #stimulus {
-    padding-top: 300px;
+    padding-top: 220px;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-button {
-    padding-left: 30px;
-    padding-right: 30px;
+#face_left {
+  margin-right: 30px;
+}
+#face_right {
+  margin-left: 30px;
+}
+#button {
+  margin-top: 10px;
+}
+#left_button {
+  margin-right: 30px;
+}
+#right_button {
+  margin-left: 30px;
 }
 
-input[type=range] {
-  -webkit-appearance: none;
+.radio-group {
+  display: inline-block; /* Aligns the groups horizontally */
+  margin-right: 10px; /* Adds some space between the groups */
+}
+
+#ratingSlider {
+  width: 30%;
   margin: 10px 0;
-  width: 100%;
-}
-
-input[type=range]:focus {
-  outline: none;
-}
-
-/* Styles for the slider thumb */
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
-}
-
-input[type=range]::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: #4CAF50;
-  cursor: pointer;
 }

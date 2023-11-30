@@ -7,12 +7,12 @@
 {% block body %}
     <div class="main_div">
         <div id="stimulus">
-            <h1>Which one is a dog?</h1>
-            <div>
-                <p id="face_left">face_left</p> 
-                <p id="face_right">face_right</p> 
+            <h1>Loading...</h1>
+            <div id="image">
+                <img id="face_left" src="" alt="left " height="96" width="60">
+                <img id="face_right" src="" alt="right" height="96" width="60">
             </div>
-            <div>
+            <div id="button">
                 <button type="button" class="btn btn-primary submit-response" id="left_button" onClick="submit_response(0);">Left</button>
                 <button type="button" class="btn btn-primary submit-response" id="right_button" onClick="submit_response(1);">Right</button>
             </div>

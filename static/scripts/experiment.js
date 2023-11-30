@@ -1,11 +1,27 @@
 var my_node_id;
+var questions = ["Who looks happier?", "Who looks happier?", 
+  "Who looks sadder?", "Who looks sadder?", 
+  "Who looks more neutral?", "Who looks more neutral?"];
 
 // Create the agent.
 create_agent = function() {
   dallinger.createAgent()
     .done(function (resp) {
       my_node_id = resp.node.id;
-      get_infos();
+      if (resp.node.type === "VGMCPAgent") {
+        $("h1").html(questions[(resp.node.network_id-1) % 6]);
+        get_infos();
+      } else {
+        deleteNode(my_node_id);
+        dallinger.goToPage('instruct-2');
+      }
+      // switch (resp.node.type) {
+      //   case "VGMCPAgent":
+      //     get_infos();
+      //   default: 
+      //     deleteNode(my_node_id);
+      //     dallinger.goToPage('experiment2');
+      // }
     })
     .fail(function (rejection) {
       // A 403 is our signal that it's time to go to the questionnaire
@@ -52,9 +68,13 @@ submit_response = function(choice) {
 
 showFace = function (face, side) {
   if (side === "left") {
-    $("#face_left").html(face["start_happy"]);
+    $("#face_left").attr('src', 'data:image/jpeg;base64,' + face["face"]);
   } else if (side === "right") {
-    $("#face_right").html(face["start_happy"]);
+    $("#face_right").attr('src', 'data:image/jpeg;base64,' + face["face"]);
   }
 }
 
+
+function deleteNode (my_node_id) {
+  dallinger.post('/delete/' + my_node_id)
+}

@@ -1,1 +1,57 @@
 {% extends "base/ad.html" %}
+
+{% block body %}
+    <div id="container-not-an-ad">
+        <div id="ad">
+            <div class="row">
+                <div class="col-xs-2">
+                    {% block lab_logo %}
+                        <img id="adlogo" src="{{ url_for('static', filename='images/Warwick_logo.png') }}" alt="Lab Logo" />
+                    {% endblock %}
+                </div>
+                <div class="col-xs-10">
+                    {% block ad %}
+
+                    {% if (mode == "sandbox") or (mode == "debug") %}
+                        {% block sandbox_or_debug %}
+                            <p>
+                                <b>Application ID:</b> {{ app_id }}.
+                            </p>
+                        {% endblock sandbox_or_debug %}
+                    {% endif %}
+
+                    {% if assignmentid == "ASSIGNMENT_ID_NOT_AVAILABLE" %}
+                        {% block no_assignment %}
+                            <h1>Call for participants</h1>
+                            <p>
+                                The Sanborn Lab at University of Warwick is looking for online participants
+                                for a psychology experiment. The only requirements
+                                are that you are at least 18 years old and are a fluent English
+                                speaker. The task will take 45 minutes and will pay &#163;8.
+                            </p>
+                            <p>
+                                Please click the "Accept HIT" button to begin the task.
+                            </p>
+                        {% endblock no_assignment %}
+                    {% else %}
+                        {% block live %}
+                            <h1>Thanks for accepting this HIT.</h1>
+                            <p>
+                                By clicking the following URL link, you will be taken to the experiment,
+                                including complete instructions and an informed consent agreement.
+                            </p>
+                            <div class="alert alert-warning">
+                                <b>Warning</b>: Please disable pop-up blockers before continuing.
+                            </div>
+
+                            <button type="button" id="begin-button" class="btn btn-primary btn-lg">
+                            Begin Experiment
+                            </button>
+                        {% endblock live %}
+                    {% endif %}
+                {% endblock ad %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
